@@ -1,0 +1,133 @@
+{
+  "$schema": "https://schemas.elgato.com/streamdeck/plugins/manifest.json",
+  "Name": "Pokédex with Dad",
+  "Version": "0.1.0.0",
+  "Author": "Alexander Jakobsen",
+  "Description": "The Pokédex's caught count and last catch, the YouTube channel's subscribers and views, and Claude's usage limits, as Pokédex tiles.",
+  "UUID": "io.github.alexanderjuulj.pokedex",
+  "Category": "Pokédex with Dad",
+  "CategoryIcon": "imgs/plugin/category",
+  "Icon": "imgs/plugin/marketplace",
+  "CodePath": "bin/plugin.mjs",
+  "SDKVersion": 3,
+  "Software": {
+    "MinimumVersion": "7.1"
+  },
+  "OS": [
+    {
+      "Platform": "mac",
+      "MinimumVersion": "12"
+    }
+  ],
+  "Nodejs": {
+    "Version": "24"
+  },
+  "Actions": [
+    {
+      "Name": "Pokédex count",
+      "UUID": "io.github.alexanderjuulj.pokedex.caught",
+      "Icon": "imgs/actions/caught/icon",
+      "Tooltip": "How many of the goal's Pokémon are caught. Press to open the Pokédex.",
+      "PropertyInspectorPath": "ui/pokedex.html",
+      "Controllers": [
+        "Keypad"
+      ],
+      "SupportedInMultiActions": false,
+      "UserTitleEnabled": false,
+      "States": [
+        {
+          "Image": "imgs/actions/caught/key",
+          "ShowTitle": false
+        }
+      ]
+    },
+    {
+      "Name": "Last caught",
+      "UUID": "io.github.alexanderjuulj.pokedex.last-caught",
+      "Icon": "imgs/actions/last-caught/icon",
+      "Tooltip": "The Pokémon you caught most recently. Press to open its page.",
+      "PropertyInspectorPath": "ui/pokedex.html",
+      "Controllers": [
+        "Keypad"
+      ],
+      "SupportedInMultiActions": false,
+      "UserTitleEnabled": false,
+      "States": [
+        {
+          "Image": "imgs/actions/last-caught/key",
+          "ShowTitle": false
+        }
+      ]
+    },
+    {
+      "Name": "Subscribers",
+      "UUID": "io.github.alexanderjuulj.pokedex.subscribers",
+      "Icon": "imgs/actions/subscribers/icon",
+      "Tooltip": "The channel's subscribers. Press to open YouTube Studio.",
+      "PropertyInspectorPath": "ui/youtube.html",
+      "Controllers": [
+        "Keypad"
+      ],
+      "SupportedInMultiActions": false,
+      "UserTitleEnabled": false,
+      "States": [
+        {
+          "Image": "imgs/actions/subscribers/key",
+          "ShowTitle": false
+        }
+      ]
+    },
+    {
+      "Name": "Total views",
+      "UUID": "io.github.alexanderjuulj.pokedex.views",
+      "Icon": "imgs/actions/views/icon",
+      "Tooltip": "The channel's total views. Press to open YouTube Studio.",
+      "PropertyInspectorPath": "ui/youtube.html",
+      "Controllers": [
+        "Keypad"
+      ],
+      "SupportedInMultiActions": false,
+      "UserTitleEnabled": false,
+      "States": [
+        {
+          "Image": "imgs/actions/views/key",
+          "ShowTitle": false
+        }
+      ]
+    },
+    {
+      "Name": "Claude 5h usage",
+      "UUID": "io.github.alexanderjuulj.pokedex.claude-5h",
+      "Icon": "imgs/actions/claude-5h/icon",
+      "Tooltip": "How much of Claude's 5-hour limit is used, and when it resets. Press to open Claude's usage page.",
+      "Controllers": [
+        "Keypad"
+      ],
+      "SupportedInMultiActions": false,
+      "UserTitleEnabled": false,
+      "States": [
+        {
+          "Image": "imgs/actions/claude-5h/key",
+          "ShowTitle": false
+        }
+      ]
+    },
+    {
+      "Name": "Claude weekly usage",
+      "UUID": "io.github.alexanderjuulj.pokedex.claude-7d",
+      "Icon": "imgs/actions/claude-7d/icon",
+      "Tooltip": "How much of Claude's weekly limit is used, and when it resets. Press to open Claude's usage page.",
+      "Controllers": [
+        "Keypad"
+      ],
+      "SupportedInMultiActions": false,
+      "UserTitleEnabled": false,
+      "States": [
+        {
+          "Image": "imgs/actions/claude-7d/key",
+          "ShowTitle": false
+        }
+      ]
+    }
+  ]
+}

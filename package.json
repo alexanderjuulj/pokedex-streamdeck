@@ -1,0 +1,31 @@
+{
+  "name": "pokedex-streamdeck",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "build": "esbuild src/plugin.ts --bundle --platform=node --target=node24 --format=esm --outfile=io.github.alexanderjuulj.pokedex.sdPlugin/bin/plugin.mjs --banner:js=\"import { createRequire } from 'node:module'; const require = createRequire(import.meta.url);\" --log-level=warning && cp node_modules/@resvg/resvg-wasm/index_bg.wasm io.github.alexanderjuulj.pokedex.sdPlugin/bin/resvg.wasm",
+    "lint": "tsc",
+    "images": "tsx scripts/make-images.ts",
+    "glyphs": "tsx scripts/make-glyphs.ts",
+    "deck:validate": "streamdeck validate io.github.alexanderjuulj.pokedex.sdPlugin",
+    "deck:link": "streamdeck link io.github.alexanderjuulj.pokedex.sdPlugin",
+    "deck:restart": "streamdeck restart io.github.alexanderjuulj.pokedex"
+  },
+  "dependencies": {
+    "@elgato/streamdeck": "^3.0.4",
+    "@elgato/utils": "0.6.2",
+    "@resvg/resvg-wasm": "^2.6.2"
+  },
+  "devDependencies": {
+    "@elgato/cli": "^1.10.4",
+    "@fontsource/figtree": "^5.3.0",
+    "@types/fontkit": "^2.0.9",
+    "@types/node": "^24.19.2",
+    "esbuild": "^0.28.2",
+    "fontkit": "^2.0.4",
+    "sharp": "^0.35.5",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  }
+}

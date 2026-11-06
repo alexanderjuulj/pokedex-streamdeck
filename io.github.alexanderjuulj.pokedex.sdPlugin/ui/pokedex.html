@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+  <head lang="en">
+    <title>Pokédex</title>
+    <meta charset="utf-8" />
+    <script src="sdpi-components.js"></script>
+    <style>
+      .note { margin: 8px 12px 0 103px; color: #9a9a9a; font: 12px/1.4 system-ui, sans-serif; min-height: 1.4em; }
+    </style>
+  </head>
+  <body>
+    <sdpi-item label="Address">
+      <sdpi-textfield id="url" placeholder="https://pokedex.example.com"></sdpi-textfield>
+    </sdpi-item>
+    <sdpi-item label="Username">
+      <sdpi-textfield id="username"></sdpi-textfield>
+    </sdpi-item>
+    <sdpi-item label="Password">
+      <sdpi-password id="password"></sdpi-password>
+    </sdpi-item>
+    <sdpi-item>
+      <sdpi-button id="save">Save and log in</sdpi-button>
+    </sdpi-item>
+    <p class="note" id="status"></p>
+    <p class="note">Shared by the Pokédex keys. The password stays in your Mac's Keychain.</p>
+
+    <script>
+      const { streamDeckClient } = SDPIComponents;
+      const field = (id) => document.getElementById(id);
+
+      streamDeckClient.sendToPropertyInspector.subscribe(({ payload }) => {
+        if (payload?.event !== "status") return;
+        field("status").textContent = payload.status;
+        if (payload.hasPassword) field("password").setAttribute("placeholder", "Saved. Type to change");
+      });
+
+      streamDeckClient.getGlobalSettings().then((settings) => {
+        field("url").value = settings.pokedexUrl ?? "";
+        field("username").value = settings.pokedexUser ?? "";
+      });
+      streamDeckClient.send("sendToPlugin", { event: "status" });
+
+      field("save").addEventListener("click", () => {
+        field("status").textContent = "Logging in…";
+        streamDeckClient.send("sendToPlugin", {
+          event: "saveLogin",
+          url: field("url").value,
+          username: field("username").value,
+          password: field("password").value,
+        });
+        field("password").value = "";
+      });
+    </script>
+  </body>
+</html>

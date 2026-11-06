@@ -1,0 +1,5 @@
+# pnpm 11+ refuses to run dependency build scripts without a decision here.
+# esbuild's and sharp's postinstalls fetch or check their platform binaries.
+allowBuilds:
+  esbuild: true
+  sharp: true

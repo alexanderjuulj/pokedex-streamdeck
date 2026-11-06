@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+  <head lang="en">
+    <title>YouTube</title>
+    <meta charset="utf-8" />
+    <script src="sdpi-components.js"></script>
+    <style>
+      .note { margin: 8px 12px 0 103px; color: #9a9a9a; font: 12px/1.4 system-ui, sans-serif; }
+    </style>
+  </head>
+  <body>
+    <sdpi-item label="API key">
+      <sdpi-password setting="youtubeApiKey" global></sdpi-password>
+    </sdpi-item>
+    <sdpi-item label="Channel">
+      <sdpi-textfield setting="youtubeChannel" global placeholder="UC… or @handle"></sdpi-textfield>
+    </sdpi-item>
+    <p class="note">Shared by the Subs and Views keys. The key needs the YouTube Data API v3 switched on in Google Cloud.</p>
+  </body>
+</html>
