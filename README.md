@@ -12,7 +12,7 @@ total views, and how much of Claude's usage limits is gone.
 | **Pokédex count** | Caught of the goal, with a bar | Opens the Pokédex |
 | **Last caught** | The newest Pokémon of the goal, in its type color with its artwork | Opens its page |
 | **Subscribers** | The channel's subscribers | Opens YouTube Studio |
-| **Total views** | The channel's total views | Opens YouTube Studio |
+| **Total views** | The views of all the channel's public videos, added up | Opens YouTube Studio |
 | **Claude 5h usage** | The 5-hour limit used, and the time until it resets | Opens Claude's usage page |
 | **Claude weekly usage** | The weekly limit used, and the time until it resets | Opens Claude's usage page |
 
@@ -49,8 +49,8 @@ plugins when it starts, so quit it and open it again. Then drag the keys from
 - **Subscribers or Total views:** a YouTube API key
   ([Google Cloud](https://console.cloud.google.com/apis/credentials), with the
   YouTube Data API v3 switched on) and the channel, as a `UC…` ID or an
-  `@handle`. Both keys share these. A refresh uses 1 of the key's 10,000 free
-  units a day.
+  `@handle`. Both keys share these. A refresh uses 3 of the key's 10,000 free
+  units a day, and 2 more for each further 50 videos.
 - **Claude:** nothing to fill in. They read Claude Code's login from the Keychain,
   so Claude Code has to be logged in on this Mac. The login is only sent to
   Anthropic, and never refreshed from here: Claude Code does that itself, so an
@@ -68,6 +68,8 @@ pnpm images        # redraw the fixed images and preview.png from src/keys/draw.
 pnpm glyphs        # regenerate the Figtree outlines
 ```
 
+- `deck:restart` can say "Restarted" and leave the old build running. If a change
+  doesn't show up, quit and reopen Stream Deck.
 - `src/keys/draw.ts` draws the tiles. They're SVG with the text as outlines
   (`glyphs.ts`), so they look the same whether or not Figtree is installed.
 - Last caught has a picture in it, so `raster.ts` renders that key to a PNG (resvg,
